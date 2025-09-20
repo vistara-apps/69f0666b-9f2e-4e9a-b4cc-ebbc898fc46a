@@ -8,9 +8,9 @@ interface AppShellProps {
 }
 
 export function AppShell({ children, variant = 'default' }: AppShellProps) {
-  const containerClass = variant === 'compact' 
-    ? 'min-h-screen bg-bg px-2 py-2'
-    : 'min-h-screen bg-bg px-4 sm:px-6 lg:px-8 py-4'
+  const containerClass = variant === 'compact'
+    ? 'min-h-screen bg-gray-900 px-2 py-2'
+    : 'min-h-screen bg-gray-900 px-4 sm:px-6 lg:px-8 py-4'
 
   return (
     <div className={containerClass}>

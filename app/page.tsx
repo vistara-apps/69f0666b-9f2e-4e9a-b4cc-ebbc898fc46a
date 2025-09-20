@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useMiniKit } from '@coinbase/minikit'
-import { useAuthenticate } from '@coinbase/onchainkit/minikit'
+// Removed useMiniKit import as it's not available in OnchainKit
 import { AppShell } from '../components/AppShell'
 import { OnboardingFlow } from '../components/OnboardingFlow'
 import { Dashboard } from '../components/Dashboard'
@@ -13,8 +12,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner'
 type AppView = 'onboarding' | 'dashboard' | 'create-goal' | 'social' | 'settings'
 
 export default function Home() {
-  const { context } = useMiniKit()
-  const { user } = useAuthenticate()
+  // Simplified authentication - removed useMiniKit and useAuthenticate as they're not available in OnchainKit
   const [currentView, setCurrentView] = useState<AppView>('onboarding')
   const [isLoading, setIsLoading] = useState(true)
 
@@ -22,20 +20,23 @@ export default function Home() {
     // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false)
-      if (user) {
-        setCurrentView('dashboard')
-      }
+      // For demo purposes, always start with onboarding
+      // In a real app, you'd check for existing wallet connection
     }, 1000)
 
     return () => clearTimeout(timer)
-  }, [user])
+  }, [])
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-bg flex items-center justify-center">
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     )
+  }
+
+  const handleNavigate = (view: string) => {
+    setCurrentView(view as AppView)
   }
 
   const renderCurrentView = () => {
@@ -43,19 +44,19 @@ export default function Home() {
       case 'onboarding':
         return <OnboardingFlow onComplete={() => setCurrentView('dashboard')} />
       case 'dashboard':
-        return <Dashboard onNavigate={setCurrentView} />
+        return <Dashboard onNavigate={handleNavigate} />
       case 'create-goal':
         return <GoalCreation onBack={() => setCurrentView('dashboard')} />
       case 'social':
         return <SocialCircles onBack={() => setCurrentView('dashboard')} />
       default:
-        return <Dashboard onNavigate={setCurrentView} />
+        return <Dashboard onNavigate={handleNavigate} />
     }
   }
 
   return (
     <AppShell>
-      <div className="animate-fade-in">
+      <div className="opacity-100 transition-opacity duration-300">
         {renderCurrentView()}
       </div>
     </AppShell>
