@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "CryptoGoal",
+    "subtitle": "Built with Zara",
+    "description": "CryptoGoal is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app",
+    "splashImageUrl": "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app/image.png",
+    "tagline": "CryptoGoal",
+    "screenshotUrls": [
+      "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app/screenshot.png",
+      "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://69f0666b9f2e4e9ab4ccebbc898fc46a-g53m.vercel.app/api/webhook"
+  }
+}
