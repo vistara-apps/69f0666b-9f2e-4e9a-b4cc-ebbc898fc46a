@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useMiniKit } from '@coinbase/minikit'
-import { useAuthenticate } from '@coinbase/onchainkit/minikit'
 import { Wallet, Target, Users, TrendingUp, ArrowRight } from 'lucide-react'
 import { LoadingSpinner } from './ui/LoadingSpinner'
 
@@ -12,8 +10,7 @@ interface OnboardingFlowProps {
 }
 
 export function OnboardingFlow({ onComplete, variant = 'wallet-connect' }: OnboardingFlowProps) {
-  const { context } = useMiniKit()
-  const { user } = useAuthenticate()
+  // Simplified - removed useMiniKit and useAuthenticate as they're not available in OnchainKit
   const [isConnecting, setIsConnecting] = useState(false)
   const [step, setStep] = useState(0)
 
@@ -54,15 +51,15 @@ export function OnboardingFlow({ onComplete, variant = 'wallet-connect' }: Onboa
       <div className="max-w-md mx-auto space-y-8 py-8">
         {/* Hero Section */}
         <div className="text-center space-y-4">
-          <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-xl mx-auto flex items-center justify-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-green-600 rounded-xl mx-auto flex items-center justify-center">
             <Wallet className="h-10 w-10 text-white" />
           </div>
-          
-          <h1 className="text-3xl font-bold gradient-text">
+
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
             Welcome to CryptoGoal
           </h1>
-          
-          <p className="text-text-secondary text-balance">
+
+          <p className="text-gray-400 text-balance">
             Automate your crypto savings, visualize your progress, and earn yield effortlessly.
           </p>
         </div>
@@ -70,13 +67,13 @@ export function OnboardingFlow({ onComplete, variant = 'wallet-connect' }: Onboa
         {/* Features */}
         <div className="space-y-4">
           {features.map((feature, index) => (
-            <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-surface/50">
-              <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <feature.icon className="h-5 w-5 text-primary" />
+            <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-gray-800/50">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <feature.icon className="h-5 w-5 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-medium text-text-primary">{feature.title}</h3>
-                <p className="text-sm text-text-secondary">{feature.description}</p>
+                <h3 className="font-medium text-white">{feature.title}</h3>
+                <p className="text-sm text-gray-400">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -101,7 +98,7 @@ export function OnboardingFlow({ onComplete, variant = 'wallet-connect' }: Onboa
           )}
         </button>
 
-        <p className="text-xs text-text-secondary text-center">
+        <p className="text-xs text-gray-400 text-center">
           By connecting, you agree to our Terms of Service and Privacy Policy
         </p>
       </div>
@@ -112,32 +109,32 @@ export function OnboardingFlow({ onComplete, variant = 'wallet-connect' }: Onboa
     return (
       <div className="max-w-md mx-auto space-y-8 py-8">
         <div className="text-center space-y-4">
-          <div className="w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-xl mx-auto flex items-center justify-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-blue-600 rounded-xl mx-auto flex items-center justify-center">
             <Target className="h-10 w-10 text-white" />
           </div>
-          
-          <h2 className="text-2xl font-bold text-text-primary">
+
+          <h2 className="text-2xl font-bold text-white">
             You're all set!
           </h2>
-          
-          <p className="text-text-secondary">
+
+          <p className="text-gray-400">
             Your Base wallet is connected. Ready to start your crypto savings journey?
           </p>
         </div>
 
         <div className="card space-y-4">
-          <h3 className="font-semibold text-text-primary">Quick Start Tips:</h3>
-          <ul className="space-y-2 text-sm text-text-secondary">
+          <h3 className="font-semibold text-white">Quick Start Tips:</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
             <li className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-green-600 rounded-full"></div>
               Set your first savings goal
             </li>
             <li className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-green-600 rounded-full"></div>
               Create automated savings rules
             </li>
             <li className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-green-600 rounded-full"></div>
               Join social savings circles
             </li>
           </ul>
